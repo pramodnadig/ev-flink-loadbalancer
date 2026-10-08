@@ -1,0 +1,5 @@
+feeder_id,name,sites,stations,ports,installed_kw,diversity_factor,capacity_kw
+F1-DOWNTOWN-N,Downtown North,BRYANT + WEBSTER,9,14,92.39999999999999,0.7,64.7
+F2-DOWNTOWN-S,Downtown South,HAMILTON + HIGH,6,11,72.6,0.7,50.8
+F3-CAL-AVE,California Avenue,CAMBRIDGE + TED THOMPSON,9,18,118.8,0.7,83.2
+F4-LIBRARIES,Libraries (MPL + Rinconada),MPL + RINCONADA,7,7,46.199999999999996,0.7,32.3

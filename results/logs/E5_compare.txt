@@ -1,0 +1,8 @@
+reference: E1_event_time   recovered: E5_recovery
+failure  : failure injected at wall time 1791450671.569, after 23040 events since the last (re)start, event_time=1579796040000
+  feeder_load    ref=  8423 rec=  8423 identical=True  duplicates_in_recovered=0
+  sustained      ref=  8601 rec=  8601 identical=True  duplicates_in_recovered=0
+  alerts         ref=     8 rec=     8 identical=True  duplicates_in_recovered=0
+  sessions       ref=   334 rec=   334 identical=True  duplicates_in_recovered=0
+  station_daily  ref=    62 rec=    62 identical=True  duplicates_in_recovered=0
+RESULT: IDENTICAL - state and outputs fully recovered (exactly-once)

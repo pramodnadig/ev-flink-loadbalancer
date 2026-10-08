@@ -1,0 +1,58 @@
+[1/4] recreating Kafka topic ev-exp_base
+[kafka] deleted old topic ev-exp_base
+[kafka] created topic ev-exp_base (1 partition)
+[2/4] starting Flink job 'E5_recovery' (log: results/logs/E5_recovery.job.log)
+      job is running (first checkpoint after 11s)
+[3/4] sending events at 900x
+[kafka] sending 46,081 events to ev-exp_base at 900x (~229 s)
+[kafka]   20,000/46,081 sent | behind schedule 0.00s
+[kafka]   40,000/46,081 sent | behind schedule 0.00s
+[kafka] done: 46,081 events in 228.7 s
+[4/4] waiting for the job to finish ...
+==========================================================================
+ job finished in 236.5 s
+==============================================================================
+ RUN E5_recovery: stream=exp_base  D=120.0s  L=15min  runtime=237s
+==============================================================================
+rows per sink: {'alerts': 8, 'dropped_late': 0, 'feeder_load': 8423, 'probe': 159, 'sessions': 334, 'station_daily': 62, 'sustained': 8601} | uncommitted files: 4
+failure injected: failure injected at wall time 1791450671.569, after 23040 events since the last (re)start, event_time=1579796040000
+
+[probe] events=46,081  late (ts <= watermark)=0  max lateness=0s  hour-corrections=0
+
+[feeder_load] minute results=8,423  revisions (late firings)=0
+               minutes  capacity_kw  peak_kw  peak_pct  minutes_over_100
+feeder_id                                                               
+F1-DOWNTOWN-N     2643        64.68  55.4848     85.78                 0
+F2-DOWNTOWN-S     2219        50.82  53.6520    105.57                12
+F3-CAL-AVE        2153        83.16  78.1767     94.01                 0
+F4-LIBRARIES      1408        32.34  21.3950     66.16                 0
+
+[sustained] windows=8,601  >=80%: 433  revisions=0
+
+[alerts] by type and feeder:
+alert_type     SPIKE  SUSTAINED
+feeder_id                      
+F1-DOWNTOWN-N      0          2
+F2-DOWNTOWN-S      1          3
+F3-CAL-AVE         0          2
+alert_type     feeder_id event_time_local    pct  load_kw  capacity_kw
+ SUSTAINED F1-DOWNTOWN-N 2020-01-22 10:48  80.62  52.1465        64.68
+ SUSTAINED F1-DOWNTOWN-N 2020-01-22 11:32  80.11  51.8146        64.68
+ SUSTAINED F2-DOWNTOWN-S 2020-01-22 11:42  80.11  40.7115        50.82
+ SUSTAINED F2-DOWNTOWN-S 2020-01-22 14:18  80.20  40.7596        50.82
+ SUSTAINED F2-DOWNTOWN-S 2020-01-23 11:04  80.20  40.7589        50.82
+     SPIKE F2-DOWNTOWN-S 2020-01-23 11:11 105.57  53.6520        50.82
+ SUSTAINED    F3-CAL-AVE 2020-01-23 11:31  80.20  66.6947        83.16
+ SUSTAINED    F3-CAL-AVE 2020-01-23 12:46  80.28  66.7637        83.16
+
+[sessions] 334 summaries  status={'COMPLETE': 334}  energy=3,504.7 kWh  cost=$1,063.73  with late events=0
+
+[station_daily] 62 station-days; busiest:
+ day_local     station_id  sessions  energy_kwh  cost_usd  avg_duration_min
+2020-01-23     HAMILTON-2        14     111.703     32.55             116.4
+2020-01-22     HAMILTON-2        11     107.955     32.94             159.7
+2020-01-23      WEBSTER-1        10     106.620     31.37             145.0
+2020-01-22 TED-THOMPSON-1         7     100.009     30.89             160.3
+2020-01-22      WEBSTER-1         9      95.382     31.50             144.0
+
+[dropped_late] records too late for the windows (beyond allowed lateness): 0

@@ -1,0 +1,121 @@
+==============================================================================
+1. CLEANING SUMMARY
+==============================================================================
+Raw rows                      :   259,415
+  R0 removed       4  exact duplicate rows
+  R1 removed       0  start time unparseable or unknown time-zone label
+  R2 removed      22  plugged-in duration missing, <= 0 or > 24 h
+  R3 removed      40  charging time missing, <= 0 or longer than plugged-in time
+  R4 removed   1,033  energy below 0.05 kWh (no real charging)
+  R5 removed       0  recorded end time before start time (corrupt timestamps)
+  R6 removed      15  average power > 1.25x the charger rating (physically impossible)
+  R7 removed       0  site not mapped to any feeder []
+  R8 removed   1,106  overlaps an earlier session on the same port
+Clean sessions (2011-2020)    :   257,195  (99.1% of raw)
+Sites kept                    : ['BRYANT', 'CAMBRIDGE', 'HAMILTON', 'HIGH', 'MPL', 'RINCONADA', 'SHERMAN', 'TED THOMPSON', 'WEBSTER']
+
+==============================================================================
+2. REPLAY WINDOW
+==============================================================================
+Local window : 2020-01-13 00:00  ->  2020-01-27 00:00  (America/Los_Angeles)
+UTC ms       : 1578902400000  ->  1580112000000
+Sessions     : 2,063   energy 19,687 kWh
+Sessions per feeder:
+               sessions  energy_kwh  ports_used
+feeder_id                                      
+F1-DOWNTOWN-N       563      6125.9          14
+F2-DOWNTOWN-S       577      5317.1          11
+F3-CAL-AVE          683      6006.1          18
+F4-LIBRARIES        240      2237.6           7
+Expected POWER events (1 per 60s while charging): ~250,655
+
+==============================================================================
+3. STATIONS AND FEEDERS (capacity at diversity factor 0.7)
+==============================================================================
+    station_id                   station_name         site     feeder_id  ports       lat         lon
+      BRYANT-1       PALO ALTO CA / BRYANT #1       BRYANT F1-DOWNTOWN-N      1 37.446613 -122.162308
+      BRYANT-2       PALO ALTO CA / BRYANT #2       BRYANT F1-DOWNTOWN-N      1 37.446510 -122.162140
+      BRYANT-3       PALO ALTO CA / BRYANT #3       BRYANT F1-DOWNTOWN-N      1 37.446583 -122.162109
+      BRYANT-4       PALO ALTO CA / BRYANT #4       BRYANT F1-DOWNTOWN-N      2 37.446785 -122.162369
+      BRYANT-5       PALO ALTO CA / BRYANT #5       BRYANT F1-DOWNTOWN-N      2 37.446690 -122.162231
+      BRYANT-6       PALO ALTO CA / BRYANT #6       BRYANT F1-DOWNTOWN-N      2 37.446667 -122.162170
+   CAMBRIDGE-1    PALO ALTO CA / CAMBRIDGE #1    CAMBRIDGE    F3-CAL-AVE      2 37.426155 -122.146065
+   CAMBRIDGE-2    PALO ALTO CA / CAMBRIDGE #2    CAMBRIDGE    F3-CAL-AVE      2 37.426182 -122.146065
+   CAMBRIDGE-3    PALO ALTO CA / CAMBRIDGE #3    CAMBRIDGE    F3-CAL-AVE      2 37.426208 -122.146011
+   CAMBRIDGE-4    PALO ALTO CA / CAMBRIDGE #4    CAMBRIDGE    F3-CAL-AVE      2 37.426178 -122.146034
+   CAMBRIDGE-5    PALO ALTO CA / CAMBRIDGE #5    CAMBRIDGE    F3-CAL-AVE      2 37.426228 -122.145981
+    HAMILTON-1     PALO ALTO CA / HAMILTON #1     HAMILTON F2-DOWNTOWN-S      1 37.444489 -122.160370
+    HAMILTON-2     PALO ALTO CA / HAMILTON #2     HAMILTON F2-DOWNTOWN-S      2 37.444706 -122.160324
+        HIGH-1         PALO ALTO CA / HIGH #1         HIGH F2-DOWNTOWN-S      2 37.443211 -122.163078
+        HIGH-2         PALO ALTO CA / HIGH #2         HIGH F2-DOWNTOWN-S      2 37.443344 -122.163231
+        HIGH-3         PALO ALTO CA / HIGH #3         HIGH F2-DOWNTOWN-S      2 37.443443 -122.163139
+        HIGH-4         PALO ALTO CA / HIGH #4         HIGH F2-DOWNTOWN-S      2 37.443138 -122.163239
+         MPL-1          PALO ALTO CA / MPL #1          MPL  F4-LIBRARIES      1 37.422146 -122.112511
+         MPL-4          PALO ALTO CA / MPL #4          MPL  F4-LIBRARIES      1 37.422104 -122.113510
+         MPL-5          PALO ALTO CA / MPL #5          MPL  F4-LIBRARIES      1 37.422112 -122.113480
+         MPL-6          PALO ALTO CA / MPL #6          MPL  F4-LIBRARIES      1 37.422131 -122.113441
+   RINCONADA-1 PALO ALTO CA / RINCONADA LIB 1    RINCONADA  F4-LIBRARIES      1 37.445496 -122.138863
+   RINCONADA-2 PALO ALTO CA / RINCONADA LIB 2    RINCONADA  F4-LIBRARIES      1 37.445499 -122.138893
+   RINCONADA-3 PALO ALTO CA / RINCONADA LIB 3    RINCONADA  F4-LIBRARIES      1 37.445496 -122.138924
+TED-THOMPSON-1 PALO ALTO CA / TED THOMPSON #1 TED THOMPSON    F3-CAL-AVE      2 37.428318 -122.144188
+TED-THOMPSON-2 PALO ALTO CA / TED THOMPSON #2 TED THOMPSON    F3-CAL-AVE      2 37.428570 -122.143929
+TED-THOMPSON-3 PALO ALTO CA / TED THOMPSON #3 TED THOMPSON    F3-CAL-AVE      2 37.428623 -122.144043
+TED-THOMPSON-4 PALO ALTO CA / TED THOMPSON #4 TED THOMPSON    F3-CAL-AVE      2 37.428600 -122.143990
+     WEBSTER-1      PALO ALTO CA / WEBSTER #1      WEBSTER F1-DOWNTOWN-N      2 37.448284 -122.158272
+     WEBSTER-2      PALO ALTO CA / WEBSTER #2      WEBSTER F1-DOWNTOWN-N      1 37.448238 -122.158203
+     WEBSTER-3      PALO ALTO CA / WEBSTER #3      WEBSTER F1-DOWNTOWN-N      2 37.448273 -122.158234
+
+    feeder_id                        name                    sites  stations  ports  installed_kw  diversity_factor  capacity_kw
+F1-DOWNTOWN-N              Downtown North         BRYANT + WEBSTER         9     14          92.4               0.7         64.7
+F2-DOWNTOWN-S              Downtown South          HAMILTON + HIGH         6     11          72.6               0.7         50.8
+   F3-CAL-AVE           California Avenue CAMBRIDGE + TED THOMPSON         9     18         118.8               0.7         83.2
+ F4-LIBRARIES Libraries (MPL + Rinconada)          MPL + RINCONADA         7      7          46.2               0.7         32.3
+
+==============================================================================
+4. CAPACITY CALIBRATION (replay window, 1-minute load)
+==============================================================================
+Peak load per feeder (kW): {'F1-DOWNTOWN-N': 67.5, 'F2-DOWNTOWN-S': 55.7, 'F3-CAL-AVE': 78.2, 'F4-LIBRARIES': 35.8}
+
+   DF feeder           cap kW  peak %  min >=100%  min >=80%  15-min avg >=80%
+ 0.30 F1-DOWNTOWN-N      27.7     243        6076       7689              7768
+ 0.30 F2-DOWNTOWN-S      21.8     256        7040       8811              8861
+ 0.30 F3-CAL-AVE         35.6     219        4056       5647              5678
+ 0.30 F4-LIBRARIES       13.9     259        3596       5349              5206
+
+ 0.35 F1-DOWNTOWN-N      32.3     209        4801       6781              6768
+ 0.35 F2-DOWNTOWN-S      25.4     219        5738       7659              7687
+ 0.35 F3-CAL-AVE         41.6     188        3076       4565              4476
+ 0.35 F4-LIBRARIES       16.2     222        2678       3849              3929
+
+ 0.40 F1-DOWNTOWN-N      37.0     183        3420       5654              5601
+ 0.40 F2-DOWNTOWN-S      29.0     192        4305       6568              6526
+ 0.40 F3-CAL-AVE         47.5     165        2158       3689              3653
+ 0.40 F4-LIBRARIES       18.5     194        1450       3152              3033
+
+ 0.45 F1-DOWNTOWN-N      41.6     162        2335       4487              4461
+ 0.45 F2-DOWNTOWN-S      32.7     170        3147       5506              5399
+ 0.45 F3-CAL-AVE         53.5     146        1307       2918              2916
+ 0.45 F4-LIBRARIES       20.8     172        1124       2503              2438
+
+ 0.50 F1-DOWNTOWN-N      46.2     146        1446       3420              3443
+ 0.50 F2-DOWNTOWN-S      36.3     153        2153       4305              4250
+ 0.50 F3-CAL-AVE         59.4     132         739       2158              2196
+ 0.50 F4-LIBRARIES       23.1     155         792       1450              1483
+
+ 0.55 F1-DOWNTOWN-N      50.8     133         940       2469              2441
+ 0.55 F2-DOWNTOWN-S      39.9     139        1423       3386              3281
+ 0.55 F3-CAL-AVE         65.3     120         351       1471              1418
+ 0.55 F4-LIBRARIES       25.4     141         411       1218              1168
+
+ 0.60 F1-DOWNTOWN-N      55.4     122         468       1717              1722
+ 0.60 F2-DOWNTOWN-S      43.6     128         972       2556              2538
+ 0.60 F3-CAL-AVE         71.3     110          78        948               857
+ 0.60 F4-LIBRARIES       27.7     129         219        912               849
+
+ 0.70 F1-DOWNTOWN-N      64.7     104          25        850               798
+ 0.70 F2-DOWNTOWN-S      50.8     110         167       1295              1257
+ 0.70 F3-CAL-AVE         83.2      94           0        255               219
+ 0.70 F4-LIBRARIES       32.3     111          32        407               381
+
+Columns: minutes in the 2-week window at or above the threshold.
+'15-min avg >=80%' = sliding 15-minute windows whose average load is >= 80% (sustained excursions).

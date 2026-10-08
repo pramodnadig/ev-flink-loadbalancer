@@ -1,0 +1,13 @@
+# Python 3.11 is required (PyFlink 1.20 supports Python 3.8 - 3.11).
+#
+# On Apple Silicon Macs, apache-beam (a PyFlink dependency) has no ready-made
+# package and must be built locally. Install in this order:
+#
+#   pip install "setuptools<70" wheel "numpy<1.25"
+#   pip install --no-build-isolation -r requirements.txt
+#   pip install "setuptools<81"
+#
+apache-flink==1.20.5
+pandas>=2.0,<2.3
+matplotlib>=3.7,<3.10
+kafka-python>=2.2,<3

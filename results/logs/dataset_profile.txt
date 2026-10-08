@@ -1,0 +1,190 @@
+
+========================================================================
+1. SIZE AND COLUMNS
+========================================================================
+Rows (sessions): 259,415
+Columns (33): ['Station Name', 'MAC Address', 'Org Name', 'Start Date', 'Start Time Zone', 'End Date', 'End Time Zone', 'Transaction Date (Pacific Time)', 'Total Duration (hh:mm:ss)', 'Charging Time (hh:mm:ss)', 'Energy (kWh)', 'GHG Savings (kg)', 'Gasoline Savings (gallons)', 'Port Type', 'Port Number', 'Plug Type', 'EVSE ID', 'Address 1', 'City', 'State/Province', 'Postal Code', 'Country', 'Latitude', 'Longitude', 'Currency', 'Fee', 'Ended By', 'Plug In Event Id', 'Driver Postal Code', 'User ID', 'County', 'System S/N', 'Model Number']
+
+========================================================================
+2. TIME COVERAGE
+========================================================================
+First session start : 2011-07-29 20:17:00
+Last session start  : 2020-12-31 18:19:00
+Unparseable start   : 0
+Unparseable end     : 40
+Start time zones    : {'PDT': 166763, 'PST': 92621, 'UTC': 31}
+
+Sessions per year:
+start
+2011     1275
+2012     6601
+2013    10109
+2014    11722
+2015    23111
+2016    46943
+2017    49022
+2018    42803
+2019    47732
+2020    20097
+
+========================================================================
+3. ENTITIES: STATIONS, SITES, PORTS
+========================================================================
+Distinct station names : 47
+Distinct MAC addresses : 83
+Distinct sites         : 23
+Org names              : {'City of Palo Alto ': 236865, 'City of Palo Alto': 22550}
+Port types             : {'Level 2': 254727, 'Level 1': 4679, nan: 9}
+Plug types             : {'J1772': 254734, 'NEMA 5-20R': 4681}
+Ports per station      : {2: 153477, 1: 105938}
+
+Sites (stations, sessions, first/last year, lat, lon):
+                 stations  sessions  first  last        lat         lon
+site                                                                   
+BRYANT                  7     47100   2011  2020  37.446613 -122.162170
+HIGH                    4     39901   2011  2020  37.443443 -122.163033
+HAMILTON                2     38609   2011  2020  37.444489 -122.160324
+WEBSTER                 3     37585   2015  2020  37.448284 -122.158234
+CAMBRIDGE               5     32879   2016  2020  37.426182 -122.146065
+MPL                     6     28326   2014  2020  37.422123 -122.113487
+TED THOMPSON            4     16712   2016  2020  37.428318 -122.144188
+RINCONADA LIB 3         1      6499   2015  2020  37.445496 -122.138924
+RINCONADA LIB 1         1      6212   2015  2020  37.445496 -122.138863
+RINCONADA LIB 2         1      5553   2015  2020  37.445499 -122.138893
+SHERMAN 3               1         8   2020  2020  37.426620 -122.143326
+SHERMAN 1               1         7   2020  2020  37.426598 -122.143288
+SHERMAN 7               1         4   2020  2020  37.426655 -122.143417
+SHERMAN 4               1         4   2020  2020  37.426563 -122.143379
+SHERMAN 2               1         4   2020  2020  37.426537 -122.143341
+SHERMAN 6               1         3   2020  2020  37.426582 -122.143425
+SHERMAN 14              1         2   2020  2020  37.426777 -122.143311
+SHERMAN 8               1         2   2020  2020  37.426617 -122.143456
+SHERMAN 17              1         1   2020  2020  37.426823 -122.143394
+SHERMAN 5               1         1   2020  2020  37.426643 -122.143372
+SHERMAN 9               1         1   2020  2020  37.426670 -122.143257
+SHERMAN 11              1         1   2020  2020  37.426720 -122.143326
+SHERMAN 15              1         1   2020  2020  37.426773 -122.143402
+
+Station names per site:
+  BRYANT: ['PALO ALTO CA / BRYANT # 1', 'PALO ALTO CA / BRYANT #1', 'PALO ALTO CA / BRYANT #2', 'PALO ALTO CA / BRYANT #3', 'PALO ALTO CA / BRYANT #4', 'PALO ALTO CA / BRYANT #5', 'PALO ALTO CA / BRYANT #6']
+  CAMBRIDGE: ['PALO ALTO CA / CAMBRIDGE #1', 'PALO ALTO CA / CAMBRIDGE #2', 'PALO ALTO CA / CAMBRIDGE #3', 'PALO ALTO CA / CAMBRIDGE #4', 'PALO ALTO CA / CAMBRIDGE #5']
+  HAMILTON: ['PALO ALTO CA / HAMILTON #1', 'PALO ALTO CA / HAMILTON #2']
+  HIGH: ['PALO ALTO CA / HIGH #1', 'PALO ALTO CA / HIGH #2', 'PALO ALTO CA / HIGH #3', 'PALO ALTO CA / HIGH #4']
+  MPL: ['PALO ALTO CA / MPL #1', 'PALO ALTO CA / MPL #2', 'PALO ALTO CA / MPL #3', 'PALO ALTO CA / MPL #4', 'PALO ALTO CA / MPL #5', 'PALO ALTO CA / MPL #6']
+  RINCONADA LIB 1: ['PALO ALTO CA / RINCONADA LIB 1']
+  RINCONADA LIB 2: ['PALO ALTO CA / RINCONADA LIB 2']
+  RINCONADA LIB 3: ['PALO ALTO CA / RINCONADA LIB 3']
+  SHERMAN 1: ['PALO ALTO CA / SHERMAN 1']
+  SHERMAN 11: ['PALO ALTO CA / SHERMAN 11']
+  SHERMAN 14: ['PALO ALTO CA / SHERMAN 14']
+  SHERMAN 15: ['PALO ALTO CA / SHERMAN 15']
+  SHERMAN 17: ['PALO ALTO CA / SHERMAN 17']
+  SHERMAN 2: ['PALO ALTO CA / SHERMAN 2']
+  SHERMAN 3: ['PALO ALTO CA / SHERMAN 3']
+  SHERMAN 4: ['PALO ALTO CA / SHERMAN 4']
+  SHERMAN 5: ['PALO ALTO CA / SHERMAN 5']
+  SHERMAN 6: ['PALO ALTO CA / SHERMAN 6']
+  SHERMAN 7: ['PALO ALTO CA / SHERMAN 7']
+  SHERMAN 8: ['PALO ALTO CA / SHERMAN 8']
+  SHERMAN 9: ['PALO ALTO CA / SHERMAN 9']
+  TED THOMPSON: ['PALO ALTO CA / TED THOMPSON #1', 'PALO ALTO CA / TED THOMPSON #2', 'PALO ALTO CA / TED THOMPSON #3', 'PALO ALTO CA / TED THOMPSON #4']
+  WEBSTER: ['PALO ALTO CA / WEBSTER #1', 'PALO ALTO CA / WEBSTER #2', 'PALO ALTO CA / WEBSTER #3']
+
+========================================================================
+4. DATA QUALITY
+========================================================================
+  energy missing                        :        0  (0.00%)
+  energy <= 0                           :        0  (0.00%)
+  energy > 100 kWh                      :        0  (0.00%)
+  total duration missing                :        0  (0.00%)
+  total duration <= 0                   :        0  (0.00%)
+  total duration > 24 h                 :       22  (0.01%)
+  charging time > total duration        :       45  (0.02%)
+  end before start                      :       31  (0.01%)
+  duplicate Plug In Event Id+station    :   47,532  (18.32%)
+  fully duplicated rows                 :        4  (0.00%)
+
+========================================================================
+5. CHARGING BEHAVIOUR
+========================================================================
+  Energy per session (kWh)       p5=0.98  p25=3.78  p50=6.87  p75=11.46  p95=20.02  p99=36.99
+  Plugged-in duration (h)        p5=0.31  p25=1.17  p50=2.09  p75=3.09  p95=5.90  p99=12.00
+  Actively charging (h)          p5=0.28  p25=1.04  p50=1.82  p75=2.70  p95=4.21  p99=6.77
+  Average charging power (kW)    p5=2.00  p25=3.11  p50=3.70  p75=5.82  p95=6.09  p99=6.21
+
+Average power by port type (median kW):
+Port Type
+Level 1    1.28
+Level 2    3.73
+
+Share of plugged-in time spent idle (not charging): 19.6%
+
+Sessions by hour of day (start):
+start
+0       506
+1       215
+2       129
+3       179
+4       663
+5      3871
+6      8796
+7     12010
+8     17520
+9     18259
+10    18232
+11    21060
+12    20638
+13    19418
+14    18073
+15    16284
+16    15203
+17    18028
+18    19091
+19    13486
+20     7998
+21     5354
+22     3059
+23     1343
+
+========================================================================
+6. BUSIEST PERIODS (candidate replay windows)
+========================================================================
+Top 8 weeks by sessions (Jan 2019 - Feb 2020):
+            sessions        kwh
+start                          
+2020-01-13      1070  10614.510
+2020-01-27      1054   9841.059
+2019-11-18      1049   9668.116
+2019-12-16      1041   9738.562
+2019-08-26      1023   9160.514
+2020-02-03      1020  10031.638
+2020-01-20      1018   9842.990
+2019-10-21      1017   9566.799
+
+Top 10 days by sessions (Jan 2019 - Feb 2020):
+start
+2020-01-23    185
+2020-01-29    179
+2020-02-26    177
+2019-08-15    177
+2019-11-22    175
+2020-01-17    175
+2019-12-12    173
+2019-12-06    172
+2020-02-04    172
+2019-12-13    171
+
+========================================================================
+7. CONCURRENCY (how many cars charge at once, per site)
+========================================================================
+site                         stations  peak cars charging  sessions 2019
+CAMBRIDGE                           5                  10          9,411
+BRYANT                              6                  10          7,665
+HIGH                                4                   8          7,644
+WEBSTER                             3                   6          6,545
+TED THOMPSON                        4                   8          5,180
+HAMILTON                            2                   4          5,170
+MPL                                 6                   5          3,722
+RINCONADA LIB 3                     1                   2            828
+RINCONADA LIB 1                     1                   1            810
+RINCONADA LIB 2                     1                   2            757

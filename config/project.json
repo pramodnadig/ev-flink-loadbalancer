@@ -1,0 +1,83 @@
+{
+  "_comment": "Central configuration for the EV Charging Load Balancer. Every script and the Flink job read their settings from here, so an experiment is changed in ONE place.",
+
+  "dataset": {
+    "raw_csv": "data/raw/palo_alto_ev_sessions.csv",
+    "local_timezone": "America/Los_Angeles",
+    "replay_start_local": "2020-01-13 00:00",
+    "replay_end_local": "2020-01-27 00:00",
+    "_replay_note": "Two busiest pre-COVID weeks in the data (week of 13 Jan 2020 had the most sessions of 2019-2020)."
+  },
+
+  "cleaning": {
+    "max_session_hours": 24,
+    "min_energy_kwh": 0.05,
+    "charging_time_tolerance_min": 1,
+    "rated_kw": {"Level 2": 6.6, "Level 1": 1.9},
+    "max_power_over_rated": 1.25
+  },
+
+  "feeders": {
+    "_note": "Palo Alto does not publish its distribution grid layout. Car parks are grouped into feeders by geographic area (ASSUMPTION, stated in the report).",
+    "F1-DOWNTOWN-N": {"name": "Downtown North",        "sites": ["BRYANT", "WEBSTER"]},
+    "F2-DOWNTOWN-S": {"name": "Downtown South",        "sites": ["HIGH", "HAMILTON"]},
+    "F3-CAL-AVE":    {"name": "California Avenue",     "sites": ["CAMBRIDGE", "TED THOMPSON", "SHERMAN"]},
+    "F4-LIBRARIES":  {"name": "Libraries (MPL + Rinconada)", "sites": ["MPL", "RINCONADA"]}
+  },
+
+  "capacity": {
+    "_note": "EV hosting capacity of each feeder = installed charger capacity x diversity factor. A diversity factor < 1 reflects that not every charger draws full power at the same time; planners use it to size shared supply.",
+    "port_rated_kw": 6.6,
+    "diversity_factor": 0.7
+  },
+
+  "power_model": {
+    "sample_interval_s": 60,
+    "_note": "While a car is charging its charger reports power every sample_interval_s seconds; energy is spread evenly over the real charging time from the dataset."
+  },
+
+  "alerts": {
+    "spike_window_s": 60,
+    "spike_threshold_pct": 100,
+    "sustained_window_min": 15,
+    "sustained_slide_min": 1,
+    "sustained_threshold_pct": 80
+  },
+
+  "pipeline": {
+    "_note": "Defaults for the Flink job; every value can be overridden on the command line for experiments.",
+    "watermark_s": 120,
+    "idleness_s": 0,
+    "allowed_lateness_min": 15,
+    "correction_horizon_min": 30,
+    "stale_session_hours": 24,
+    "checkpoint_interval_s": 10,
+    "restart_attempts": 3,
+    "restart_delay_s": 5,
+    "state_backend": "hashmap"
+  },
+
+  "tariff": {
+    "_note": "ILLUSTRATIVE time-of-use tariff (assumption): three daily periods with the evening 16:00-21:00 peak typical of California commercial EV rates. The dataset itself has no price changes.",
+    "currency": "USD",
+    "periods": [
+      {"start": "00:00", "name": "OFF_PEAK", "usd_per_kwh": 0.20},
+      {"start": "09:00", "name": "MID_PEAK", "usd_per_kwh": 0.28},
+      {"start": "16:00", "name": "PEAK",     "usd_per_kwh": 0.42},
+      {"start": "21:00", "name": "OFF_PEAK", "usd_per_kwh": 0.20}
+    ]
+  },
+
+  "generator": {
+    "_note": "Network / device behaviour applied to the clean event stream. Delays are in EVENT-TIME units (how much later an event arrives than it happened).",
+    "seed": 42,
+    "jitter_max_s": 5,
+    "ooo_fraction": 0.05,
+    "ooo_max_delay_s": 90,
+    "late_fraction": 0.0,
+    "late_event_types": ["PLUG_IN", "UNPLUG"],
+    "late_delay_min": 10,
+    "speedup": 900,
+    "batch_wall_s": 1.0
+  }
+}
